@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyCombat combat;
     [SerializeField] private EnemyColors colors;
 
-    [HideInInspector] public UnityEvent onDie;
+    [HideInInspector] public UnityEvent onKill;
+    [HideInInspector] public Action<Enemy> onDie;
 
     public Color GetColor { get => colors.SpriteRenderer.color; }
 
@@ -36,11 +38,6 @@ public class Enemy : MonoBehaviour
         movement.JumpOn(increaseOn);
     }
 
-    private void CheckObstacleForward()
-    {
-
-    }
-
     public void AttackPlayer(Player player)
     {
         player.Damage(damage);
@@ -48,7 +45,8 @@ public class Enemy : MonoBehaviour
 
     public void Kill()
     {
-        onDie.Invoke();
         Destroy(gameObject);
+        onDie.Invoke(this);
+        onKill.Invoke();
     }
 }

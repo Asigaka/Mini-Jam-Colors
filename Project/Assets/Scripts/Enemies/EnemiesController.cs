@@ -52,7 +52,7 @@ public class EnemiesController : MonoBehaviour
             float targetX = player.transform.position.x + player.transform.localScale.x + ((spawnedEnemies.Count - 1) * enemiesOffset) + newEnemy.transform.localScale.x;
             newEnemy.SetTarget(new Vector2(targetX, newEnemy.transform.position.y));
 
-            newEnemy.onDie.AddListener(UpdateEnemies);
+            newEnemy.onDie += RemoveEnemy;
             newEnemy.transform.SetParent(enemiesContent);
         }
     }
@@ -60,6 +60,14 @@ public class EnemiesController : MonoBehaviour
     public void AttackFirstEnemy()
     {
         spawnedEnemies[0].AttackPlayer(player);
+    }
+
+    private void RemoveEnemy(Enemy enemy)
+    {
+        enemy.onDie -= RemoveEnemy;
+        spawnedEnemies.Remove(enemy);
+
+        UpdateEnemies();
     }
 
     public void UpdateEnemies()
@@ -78,10 +86,5 @@ public class EnemiesController : MonoBehaviour
                 spawnedEnemies.Remove(spawnedEnemies[i]);
             }
         }
-    }
-
-    public void RemoveEnemy(Enemy enemy)
-    {
-        spawnedEnemies.Remove(enemy);
     }
 }
