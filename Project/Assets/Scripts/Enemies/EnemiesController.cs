@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemiesController : MonoBehaviour
@@ -27,6 +28,8 @@ public class EnemiesController : MonoBehaviour
 
     private void Start()
     {
+        player.onEnemyMiss.AddListener(AttackFirstEnemy);
+
         StartCoroutine(SpawnEnemies());
     }
 
@@ -49,7 +52,31 @@ public class EnemiesController : MonoBehaviour
             float targetX = player.transform.position.x + player.transform.localScale.x + ((spawnedEnemies.Count - 1) * enemiesOffset) + newEnemy.transform.localScale.x;
             newEnemy.SetTarget(new Vector2(targetX, newEnemy.transform.position.y));
 
+            newEnemy.onDie.AddListener(UpdateEnemies);
             newEnemy.transform.SetParent(enemiesContent);
+        }
+    }
+
+    public void AttackFirstEnemy()
+    {
+        spawnedEnemies[0].AttackPlayer(player);
+    }
+
+    public void UpdateEnemies()
+    {
+        spawnedEnemies = spawnedEnemies.Where(item => item != null).ToList();
+
+        for (int i = 0; i < spawnedEnemies.Count; i++)
+        {
+            if (spawnedEnemies[i] != null)
+            {
+                float targetX = player.transform.position.x + player.transform.localScale.x + ((i) * enemiesOffset) + spawnedEnemies[i].transform.localScale.x;
+                spawnedEnemies[i].SetTarget(new Vector2(targetX, spawnedEnemies[i].transform.position.y));
+            }
+            else
+            {
+                spawnedEnemies.Remove(spawnedEnemies[i]);
+            }
         }
     }
 

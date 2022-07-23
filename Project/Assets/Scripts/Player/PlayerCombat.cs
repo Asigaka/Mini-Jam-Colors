@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool TryAttack(Color attackColor, Enemy enemy)
     {
-        
-    }
+        if (enemy && attackColor == enemy.GetColor)
+        {
+            enemy.Kill();
+            return true;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return false;
     }
 }

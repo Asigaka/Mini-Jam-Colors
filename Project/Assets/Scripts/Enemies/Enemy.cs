@@ -2,39 +2,27 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float checkRange = 2;
-    [SerializeField] private LayerMask checkLayer;
+    [SerializeField] private float damage = 2;
 
     [Space]
     [SerializeField] private EnemyMovement movement;
     [SerializeField] private EnemyAnimations animations;
     [SerializeField] private EnemyCombat combat;
+    [SerializeField] private EnemyColors colors;
+
+    [HideInInspector] public UnityEvent onDie;
+
+    public Color GetColor { get => colors.SpriteRenderer.color; }
 
     private Vector2 target;
-    private bool canAttackPlayer;
-    private bool stop;
 
     private void Start()
     {
-        
-    }
-
-    private void Update()
-    {
-        CheckObstacleForward();
-
-        if (canAttackPlayer)
-        {
-
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        
+        colors.SetRandomColor();
     }
 
     public void SetTarget(Vector2 target)
@@ -50,20 +38,17 @@ public class Enemy : MonoBehaviour
 
     private void CheckObstacleForward()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, checkRange, checkLayer);
 
-        if (hit)
-        {
-            Player player = GetComponentInParent<Player>();
-            canAttackPlayer = player != null;
-
-
-        }
     }
 
-    private void OnDrawGizmos()
+    public void AttackPlayer(Player player)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, -transform.right * checkRange);
+        player.Damage(damage);
+    }
+
+    public void Kill()
+    {
+        onDie.Invoke();
+        Destroy(gameObject);
     }
 }

@@ -23,18 +23,9 @@ public class EnemyMovement : MonoBehaviour
         
     }
 
-    public void PauseMovement()
-    {
-        rb.DOPause();
-    }
-
-    public void ResumeMovement()
-    {
-        rb.DOPlay();
-    }
-
     public void SetMoveTarget(Vector2 target)
     {
+        rb.DOKill();
         this.target = target;
         float duration = Vector2.Distance(transform.position, target) / speed;
         rb.DOMoveX(target.x, duration).SetEase(Ease.Linear);

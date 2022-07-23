@@ -807,6 +807,9 @@ GameObject:
   - component: {fileID: 1540357039}
   - component: {fileID: 1540357041}
   - component: {fileID: 1540357040}
+  - component: {fileID: 1540357042}
+  - component: {fileID: 1540357043}
+  - component: {fileID: 1540357044}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -854,6 +857,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f36f0712ef6ef341b5dfef78af5adeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRange: 2
+  attackLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  health: {fileID: 1540357044}
+  combat: {fileID: 1540357040}
+  animations: {fileID: 1540357043}
+  onEnemyKill:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnemyMiss:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!50 &1540357042
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540357037}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &1540357043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540357037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff47a9f2c2f5884db1010841976a578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1540357044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540357037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58de2052778330418db0f38f00aa367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 0
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1637999067
 GameObject:
   m_ObjectHideFlags: 0

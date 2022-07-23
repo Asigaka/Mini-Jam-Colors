@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6753391557069546099}
   - component: {fileID: 6817517031090747390}
   - component: {fileID: 7177553936727522940}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 9025244974570874129}
   - component: {fileID: 28614143296653096}
   - component: {fileID: 672601216153938143}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,6 +168,10 @@ MonoBehaviour:
   movement: {fileID: 28614143296653096}
   animations: {fileID: 4495290044195734851}
   combat: {fileID: 9025244974570874129}
+  colors: {fileID: 2440206560563310337}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4495290044195734851
 MonoBehaviour:
   m_ObjectHideFlags: 0
