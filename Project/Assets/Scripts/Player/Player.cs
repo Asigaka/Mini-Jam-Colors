@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 public class Player : MonoBehaviour
@@ -78,7 +79,8 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        SceneManager.LoadScene(1);
+        //Destroy(gameObject);
     }
 
     private void OnDrawGizmos()
