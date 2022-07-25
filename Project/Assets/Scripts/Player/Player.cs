@@ -55,13 +55,13 @@ public class Player : MonoBehaviour
     {
         if (combat.TryAttack(color, GetNearEnemy()))
         {
-            SoundsController.Instance.PlaySound(hit);
+            SoundsController.Instance.PlayOneShotSound(hit);
             animations.SetSucsess();
             onEnemyKill.Invoke();
         }
         else
         {
-            SoundsController.Instance.PlaySound(hitMiss);
+            SoundsController.Instance.PlayOneShotSound(hitMiss);
             animations.SetWrong();
             onEnemyMiss.Invoke();
         }
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
 
     public void Damage(float damage)
     {
-        SoundsController.Instance.PlaySound(loseHealth);
+        SoundsController.Instance.PlayOneShotSound(loseHealth);
         health.Damage(damage);
     }
 
