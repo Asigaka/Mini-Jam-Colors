@@ -994,6 +994,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &788318032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 788318033}
+  - component: {fileID: 788318034}
+  m_Layer: 0
+  m_Name: Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &788318033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788318032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1414987354}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &788318034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788318032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4db7d64070f7494e9dbd098bb7e6102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &935900982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,6 +1574,7 @@ Transform:
   m_Children:
   - {fileID: 1480418342}
   - {fileID: 2089014300}
+  - {fileID: 788318033}
   m_Father: {fileID: 646744548}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1750,6 +1795,9 @@ MonoBehaviour:
   health: {fileID: 1540357044}
   combat: {fileID: 1540357040}
   animations: {fileID: 1540357043}
+  loseHealth: {fileID: 8300000, guid: 04f10c678850dc64b9434a4d087bbd5b, type: 3}
+  hit: {fileID: 8300000, guid: 7844f0e4e1a7f0044aae48a22b19d71c, type: 3}
+  hitMiss: {fileID: 8300000, guid: 89472c39f3c3611468a2b48e4357578a, type: 3}
   onEnemyKill:
     m_PersistentCalls:
       m_Calls: []

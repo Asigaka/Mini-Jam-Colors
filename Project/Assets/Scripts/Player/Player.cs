@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerCombat combat;
     [SerializeField] private PlayerAnimations animations;
 
+    [Space]
+    [SerializeField] private AudioClip loseHealth;
+    [SerializeField] private AudioClip hit;
+    [SerializeField] private AudioClip hitMiss;
+
     [HideInInspector] public UnityEvent onEnemyKill;
     [HideInInspector] public UnityEvent onEnemyMiss;
 
@@ -50,11 +55,13 @@ public class Player : MonoBehaviour
     {
         if (combat.TryAttack(color, GetNearEnemy()))
         {
+            SoundsController.Instance.PlaySound(hit);
             animations.SetSucsess();
             onEnemyKill.Invoke();
         }
         else
         {
+            SoundsController.Instance.PlaySound(hitMiss);
             animations.SetWrong();
             onEnemyMiss.Invoke();
         }
@@ -74,6 +81,7 @@ public class Player : MonoBehaviour
 
     public void Damage(float damage)
     {
+        SoundsController.Instance.PlaySound(loseHealth);
         health.Damage(damage);
     }
 
