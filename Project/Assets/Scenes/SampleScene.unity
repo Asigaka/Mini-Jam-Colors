@@ -666,9 +666,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_LightType: 4
+  m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
+  m_FalloffIntensity: 0.319
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
@@ -720,8 +720,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
+  m_PointLightInnerRadius: 0.99158394
+  m_PointLightOuterRadius: 6.56
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -740,7 +740,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619394800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -3.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -908,6 +908,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 28614143296653096, guid: b900739b3732ebc4b8bf71e94de8d44b, type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3551532005061522902, guid: b900739b3732ebc4b8bf71e94de8d44b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1779,8 +1783,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 6544772858621495627, guid: b900739b3732ebc4b8bf71e94de8d44b, type: 3}
   enemiesSpawnPoint: {fileID: 1426848474}
   enemiesContent: {fileID: 2089014300}
-  startEnemiesCount: 15
-  maxEnemiesCount: 20
+  maxEnemiesCount: 10
   spawnDelay: 1.25
   enemiesOffset: 2
   spawnedEnemies: []

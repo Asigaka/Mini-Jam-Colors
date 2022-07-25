@@ -9,7 +9,6 @@ public class EnemiesController : MonoBehaviour
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private Transform enemiesSpawnPoint;
     [SerializeField] private Transform enemiesContent;
-    [SerializeField] private int startEnemiesCount = 7;
     [SerializeField] private int maxEnemiesCount = 20;
     [SerializeField] private float spawnDelay = 1;
     [SerializeField] private float enemiesOffset = 0.5f;
@@ -35,26 +34,27 @@ public class EnemiesController : MonoBehaviour
 
     public IEnumerator SpawnEnemies()
     {
-        for (int i = 0; i < startEnemiesCount; i++)
+        while (true)
         {
-            SpawnEnemy();
+            if (spawnedEnemies.Count < maxEnemiesCount)
+            {
+                SpawnEnemy();
+            }
+
             yield return new WaitForSeconds(spawnDelay);
         }
     }
 
     public void SpawnEnemy()
     {
-        if (spawnedEnemies.Count < maxEnemiesCount)
-        {
-            Enemy newEnemy = Instantiate(enemyPrefab, enemiesSpawnPoint.position, Quaternion.identity);
-            spawnedEnemies.Add(newEnemy);
-            //newEnemy.JumpOn(spawnedEnemies.Count);
-            float targetX = player.transform.position.x + player.transform.localScale.x + ((spawnedEnemies.Count - 1) * enemiesOffset) + newEnemy.transform.localScale.x;
-            newEnemy.SetTarget(new Vector2(targetX, newEnemy.transform.position.y));
+        Enemy newEnemy = Instantiate(enemyPrefab, enemiesSpawnPoint.position, Quaternion.identity);
+        spawnedEnemies.Add(newEnemy);
+        //newEnemy.JumpOn(spawnedEnemies.Count);
+        float targetX = player.transform.position.x + player.transform.localScale.x + ((spawnedEnemies.Count - 1) * enemiesOffset) + newEnemy.transform.localScale.x;
+        newEnemy.SetTarget(new Vector2(targetX, newEnemy.transform.position.y));
 
-            newEnemy.onDie += RemoveEnemy;
-            newEnemy.transform.SetParent(enemiesContent);
-        }
+        newEnemy.onDie += RemoveEnemy;
+        newEnemy.transform.SetParent(enemiesContent);
     }
 
     public void AttackFirstEnemy()
