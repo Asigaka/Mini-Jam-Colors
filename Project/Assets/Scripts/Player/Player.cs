@@ -40,11 +40,6 @@ public class Player : MonoBehaviour
             AttackByColor(Color.blue);
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            AttackByColor(Color.black);
-        }
-
         if (Input.GetKeyDown(KeyCode.A))
         {
             AttackByColor(Color.green);
@@ -56,6 +51,7 @@ public class Player : MonoBehaviour
         if (combat.TryAttack(color, GetNearEnemy()))
         {
             SoundsController.Instance.PlayOneShotSound(hit);
+            GameScreen.Instance.UpdateScore();
             animations.SetSucsess();
             onEnemyKill.Invoke();
         }
