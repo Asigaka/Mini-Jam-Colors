@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6753391557069546099}
   - component: {fileID: 6817517031090747390}
   - component: {fileID: 7177553936727522940}
+  - component: {fileID: 2019754322594350929}
   m_Layer: 7
   m_Name: Enemy Visual
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -1380551483
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -1186811885, guid: b99636673efdb1b47878fe5f84b36628, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,19 +99,39 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.075214624, y: -1.0386767}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 4, y: 3.125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.0243502, y: 0.97134686}
   m_EdgeRadius: 0
+--- !u!95 &2019754322594350929
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2728611260765622172}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6e5f8370efe325241b41c535dee4884e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8119144770848027297
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +148,7 @@ GameObject:
   - component: {fileID: 28614143296653096}
   - component: {fileID: 672601216153938143}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: BSlime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,15 +182,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ce7f6368bbf59458607a86e18bcc53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkRange: 2
-  checkLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  damage: 2
   movement: {fileID: 28614143296653096}
   animations: {fileID: 4495290044195734851}
   combat: {fileID: 9025244974570874129}
   colors: {fileID: 2440206560563310337}
-  onDie:
+  rb: {fileID: 672601216153938143}
+  collr2D: {fileID: 7177553936727522940}
+  onKill:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &4495290044195734851
@@ -184,6 +204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac61f5975e296645a2ab9db403ecabb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2019754322594350929}
+  attack_key: attack
+  die_key: die
 --- !u!114 &2440206560563310337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 672601216153938143}
-  speed: 3
+  speed: 4
   jumpPower: 3
   numJumps: 1
   duration: 2
@@ -239,7 +262,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.9663461
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1

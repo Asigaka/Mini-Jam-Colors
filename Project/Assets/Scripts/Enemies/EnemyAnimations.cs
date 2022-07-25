@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class EnemyAnimations : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Animator animator;
+    [SerializeField] private string attack_key;
+    [SerializeField] private string die_key;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void SetAttack() => animator.SetTrigger(attack_key);
+    public void SetDie() => animator.SetTrigger(die_key);
 }

@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float attackRange = 2;
     [SerializeField] private LayerMask attackLayers;
+    [SerializeField] private Transform attackPoint;
 
     [Space]
     [SerializeField] private Health health;
@@ -48,17 +49,19 @@ public class Player : MonoBehaviour
     {
         if (combat.TryAttack(color, GetNearEnemy()))
         {
+            animations.SetSucsess();
             onEnemyKill.Invoke();
         }
         else
         {
+            animations.SetWrong();
             onEnemyMiss.Invoke();
         }
     }
 
     private Enemy GetNearEnemy()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, attackRange, attackLayers);
+        RaycastHit2D hit = Physics2D.Raycast(attackPoint.position, attackPoint.right, attackRange, attackLayers);
 
         if (hit.collider)
         {
@@ -81,6 +84,6 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.right * attackRange);
+        Gizmos.DrawRay(attackPoint.position, attackPoint.right * attackRange);
     }
 }

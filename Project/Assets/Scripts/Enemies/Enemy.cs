@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyAnimations animations;
     [SerializeField] private EnemyCombat combat;
     [SerializeField] private EnemyColors colors;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Collider2D collr2D;
 
     [HideInInspector] public UnityEvent onKill;
     [HideInInspector] public Action<Enemy> onDie;
@@ -40,12 +42,16 @@ public class Enemy : MonoBehaviour
 
     public void AttackPlayer(Player player)
     {
+        animations.SetAttack();
         player.Damage(damage);
     }
 
     public void Kill()
     {
-        Destroy(gameObject);
+        rb.bodyType = RigidbodyType2D.Static;
+        collr2D.isTrigger = true;
+        animations.SetDie();
+        Destroy(gameObject, 0.9f);
         onDie.Invoke(this);
         onKill.Invoke();
     }

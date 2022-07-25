@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundsController : MonoBehaviour
+public static class SoundsController
 {
-    // Start is called before the first frame update
-    void Start()
+    public static void PlaySound(AudioClip audioClip)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameObject soundObject = new GameObject(audioClip.name + " Sound");
+        AudioSource audioSource = soundObject.AddComponent<AudioSource>();
+        audioSource.PlayOneShot(audioClip);
     }
 }

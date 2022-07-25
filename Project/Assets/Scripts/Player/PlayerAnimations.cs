@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Animator animator;
+    [SerializeField] private string sucsess_key;
+    [SerializeField] private string wrong_key;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void SetSucsess() => animator.SetTrigger(sucsess_key);
+    public void SetWrong() => animator.SetTrigger(wrong_key);
 }
